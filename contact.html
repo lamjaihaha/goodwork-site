@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>goodwork. — Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a href="index.html" class="wordmark">goodwork.</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About us</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="content-page">
+    <h1>Get in touch</h1>
+    <p class="intro">Good work starts with a conversation. Tell us a little about what you need.</p>
+    <form class="contact-form" onsubmit="event.preventDefault(); document.getElementById('sent').hidden=false; this.reset();">
+      <label>
+        Name
+        <input type="text" name="name" required>
+      </label>
+      <label>
+        Email
+        <input type="email" name="email" required>
+      </label>
+      <label>
+        Message
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+      <button type="submit" class="cta">Send</button>
+      <p id="sent" class="thanks" hidden>Thanks — we’ll be in touch.</p>
+    </form>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-wordmark">goodwork.</p>
+      <p class="footer-msg">Good work starts with a conversation.</p>
+    </div>
+  </footer>
+</body>
+</html>
