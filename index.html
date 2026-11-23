@@ -41,6 +41,18 @@
     </div>
   </section>
 
+  <section class="face-section">
+    <div class="face-inner">
+      <h2>Simple face sketch</h2>
+      <p class="intro">Click the button to generate a very simple line drawing of a man or woman.</p>
+      <div class="placeholder">
+        <canvas id="faceCanvas" width="280" height="280"></canvas>
+        <p id="faceLabel" class="face-label">Click to generate</p>
+      </div>
+      <button type="button" class="cta" id="generateFace">Generate face</button>
+    </div>
+  </section>
+
   <section class="promises">
     <div class="grid">
       <div>
@@ -64,5 +76,74 @@
       <p class="footer-msg">Good work starts with a conversation.</p>
     </div>
   </footer>
+
+  <script>
+    const canvas = document.getElementById('faceCanvas');
+    const ctx = canvas.getContext('2d');
+    const label = document.getElementById('faceLabel');
+
+    function drawFace(isWoman) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = '#3c2a21';
+      ctx.lineWidth = 2.5;
+      ctx.lineCap = 'round';
+
+      ctx.beginPath();
+      ctx.arc(140, 140, 80, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(115, 125, 6, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(165, 125, 6, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(140, 135);
+      ctx.lineTo(135, 150);
+      ctx.lineTo(145, 150);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(140, 165, 18, 0.15 * Math.PI, 0.85 * Math.PI);
+      ctx.stroke();
+
+      if (isWoman) {
+        ctx.beginPath();
+        ctx.moveTo(70, 100);
+        ctx.quadraticCurveTo(60, 160, 75, 210);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(210, 100);
+        ctx.quadraticCurveTo(220, 160, 205, 210);
+        ctx.stroke();
+        label.textContent = 'Woman';
+      } else {
+        ctx.beginPath();
+        ctx.moveTo(70, 120);
+        ctx.lineTo(60, 145);
+        ctx.lineTo(70, 170);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(210, 120);
+        ctx.lineTo(220, 145);
+        ctx.lineTo(210, 170);
+        ctx.stroke();
+        label.textContent = 'Man';
+      }
+    }
+
+    document.getElementById('generateFace').addEventListener('click', function () {
+      const isWoman = Math.random() > 0.5;
+      drawFace(isWoman);
+    });
+
+    ctx.fillStyle = '#f5f0e8';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = '#d4c4b0';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(10, 10, 260, 260);
+  </script>
 </body>
 </html>
